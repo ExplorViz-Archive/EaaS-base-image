@@ -1,0 +1,12 @@
+# default EOL behavior: use LF in repo, normalize (convert to native) during checkout
+* text=auto
+
+.gitignore text
+.gitattributes text
+
+# text files that will always have LF EOLs
+*.sh text eol=lf
+
+# text files that will always have CRLF EOLs
+*.bat text eol=crlf
+*.cmd text eol=crlf
