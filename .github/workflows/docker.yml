@@ -1,0 +1,16 @@
+name: Docker CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: [ '11-jdk-stretch', '8-jdk-stretch' ]
+    name: Build (Image ${{ matrix.image }})
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Build with Docker
+      run: docker build . --file ${{ matrix.image }}/Dockerfile
