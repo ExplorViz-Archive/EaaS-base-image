@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: [ '11-jdk-stretch', '8-jdk-stretch' ]
+        image: [ '11-jre-debian', '11-jre-alpine', '8-jre-debian', '8-jre-alpine' ]
     name: Build (Image ${{ matrix.image }})
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Build with Docker
+    - name: Docker Build
       run: docker build . --file ${{ matrix.image }}/Dockerfile
