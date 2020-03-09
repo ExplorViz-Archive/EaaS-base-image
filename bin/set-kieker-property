@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+KIEKER_CONFIGURATION="./META-INF/kieker.monitoring.properties"
+
+if [ "$#" -ne 2 ] || { [ "$#" -eq 1 ] && [ "$1" = "--help" ]; }; then
+    echo "Usage: $0 <property> <value>" >&2
+    echo "  Example: $0 kieker.monitoring.applicationName PetClinic" >&2
+    exit 1
+fi
+
+property="$1"
+value="$2"
+
+if grep -Eq "^$property=" "$KIEKER_CONFIGURATION"; then
+    sed -i "s/^$property=.*/$property=$value/g" "$KIEKER_CONFIGURATION"
+else
+    echo "$property=$value" >> "$KIEKER_CONFIGURATION"
+fi

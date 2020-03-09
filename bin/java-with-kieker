@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+KIEKER_FILE="/opt/kieker/kieker-aspectj.jar"
+KIEKER_CONFIGURATION="./META-INF/kieker.monitoring.properties"
+ASPECTJ_CONFIGURATION="./META-INF/aop.xml"
+
+exec java "-javaagent:$KIEKER_FILE" "-Dkieker.monitoring.configuration=$KIEKER_CONFIGURATION" "-Dkieker.monitoring.skipDefaultAOPConfiguration=true" "-Dorg.aspectj.weaver.loadtime.configuration=$ASPECTJ_CONFIGURATION" "$@"
