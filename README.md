@@ -6,7 +6,7 @@ Docker images to use as base when creating build artifact images for ExplorViz a
 
 > [ExplorViz](https://www.explorviz.net/) is an open source research monitoring and visualization approach, which uses dynamic analysis techniques to provide a live trace visualization of large software landscapes. 
 
-[ExplorViz as a Service](https://github.com/Marco01809/EaaS-server) (EaaS) allows you to collect build artifacts and run them in ExplorViz instances on-demand.
+[ExplorViz as a Service](https://github.com/ExplorViz/EaaS-server) (EaaS) allows you to collect build artifacts and run them in ExplorViz instances on-demand.
 
 When submitting builds to EaaS, they need to be wrapped inside a docker image that runs both the application and, if necessary, some load to create more interesting visualizations.
 
@@ -36,7 +36,7 @@ This file should be placed in `/opt/app/META-INF/aop.xml`. See [Kieker documenta
 **Note:** If you try to instrument an application server that is packaged as `war` or a `jar-of-jars`, e.g. like Spring Boot does, you need to unzip the war/jar and specify the classpath and main class manually, otherwise AspectJ will be unable to weave the monitoring probes into your application.
 Example: `java-with-kieker -cp ".:BOOT-INF/classes/:BOOT-INF/lib/*" com.example.app.MyApplication`
 
-See [EaaS-demo-application](https://github.com/Marco01809/EaaS-demo-application) for a full example.
+See [EaaS-demo-application](https://github.com/ExplorViz/EaaS-demo-application) for a full example.
 
 ### Versions
 
